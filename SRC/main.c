@@ -6,7 +6,7 @@
 /*   By: rchavez@student.42heilbronn.de <rchavez    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 07:23:31 by rchavez@stu       #+#    #+#             */
-/*   Updated: 2024/09/07 17:43:36 by rchavez@stu      ###   ########.fr       */
+/*   Updated: 2024/09/07 21:20:59 by rchavez@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	main(int argc, char **argv)
 			return (1);
 		}
 		i++;
+		if (chdir("..") < 0)
+			return (1);
 	}
 	dbprint(head, argc - 2, &argv[2]);
 	link_free();

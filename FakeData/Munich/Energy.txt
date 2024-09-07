@@ -1,0 +1,15 @@
+﻿HR::KWH::123
+HR::KL::42
+HR::KCAL::122
+Marketing::KWH::1235
+Marketing::KL::563
+Marketing::KCAL::6743
+Manufacturing::KWH::4532
+Manufacturing::KL::4534
+Manufacturing::KCAL::634
+Research::KWH::3424
+Research::KL::4333
+Research::KCAL::5323
+Management::KWH::3545
+Management::KL::44
+Management::KCAL::2343
