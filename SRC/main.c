@@ -6,7 +6,7 @@
 /*   By: rchavez@student.42heilbronn.de <rchavez    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 07:23:31 by rchavez@stu       #+#    #+#             */
-/*   Updated: 2024/09/07 11:01:28 by rchavez@stu      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:43:36 by rchavez@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,7 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
-	// if (put_emp()) 
-	while (head)
-	{
-		printf("%s, id %s produced %i Kg of CO2.\n", head->name, head->id, head->emmissions);
-		head = head->next;
-	}
+	dbprint(head, argc - 2, &argv[2]);
 	link_free();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rchavez@student.42heilbronn.de <rchavez    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 07:37:13 by rchavez@stu       #+#    #+#             */
-/*   Updated: 2024/09/07 15:57:54 by rchavez@stu      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:23:59 by rchavez@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	get_role(char *dir, emp_t **head)
 	return (0);
 }
 
-int	fromKey(emp_t *head, char *file, char *key)
+int	fromKey(emp_t *head, char *file, char *key, int n)
 {
 	int		fd;
 	int		fdKey;
@@ -66,7 +66,7 @@ int	fromKey(emp_t *head, char *file, char *key)
 			if (!strcmp(item, temp))
 			{
 				ft_strlcpy(temp, str2, 42, 1);
-				emp(head, id, temp);
+				emp(head, id, temp, n);
 			}
 			free_t(str2);
 			str2 = get_next_line(fdKey);
@@ -92,7 +92,7 @@ int	Parking(emp_t *head, char *file)
 	while (str)
 	{
 		ft_strlcpy(id, str, 42, 2);
-		emp(head, id, "17");
+		emp(head, id, "17", 3);
 		free_t(str);
 		str = get_next_line(fd);
 	}
@@ -124,7 +124,7 @@ int	Travel(emp_t *head, char *file)
 			delta = 4;
 		else if (!strcmp(method, "Plane"))
 			delta = 101;
-		emp_i(head, id, (atoi(km) * delta / 1000));
+		emp_i(head, id, (atoi(km) * delta / 1000), 4);
 		free_t(str);
 		str = get_next_line(fd);
 	}
@@ -147,7 +147,7 @@ int	Emails(emp_t *head, char *file)
 	{
 		ft_strlcpy(id, str, 42, 0);
 		ft_strlcpy(num, str, 42, 1);
-		emp_i(head, id, atoi(num) / 30000);
+		emp_i(head, id, atoi(num) * 0.0003f, 5);
 		free_t(str);
 		str = get_next_line(fd);
 	}
@@ -193,7 +193,7 @@ int	Energy(emp_t *head,  char *dir, char *file)
 		while (temp)
 		{
 			if (!strcmp(dpt, temp->department) && !strcmp(temp->local, dir))
-				temp->emmissions += (atoi(amt) * delta / 1000 ) / num;
+				temp->emmissions[6] += (atoi(amt) * delta / 1000 ) / num;
 			temp = temp->next;
 		}
 		free_t(str);
@@ -209,11 +209,11 @@ int	extract(char *dir, emp_t** head)
 		return (1);
 	if	(get_role(dir, head))
 		return (1);
-	if (fromKey(*head, "Vending Machine.txt", "Vending Machine Key.txt"))
+	if (fromKey(*head, "Vending Machine.txt", "Vending Machine Key.txt", 0))
 		return (1);
-	if (fromKey(*head, "Mensa.txt", "Mensa Key.txt"))
+	if (fromKey(*head, "Mensa.txt", "Mensa Key.txt", 1))
 		return (1);
-	if (fromKey(*head, "Office Supplies.txt", "Office Supplies Key.txt"))
+	if (fromKey(*head, "Office Supplies.txt", "Office Supplies Key.txt", 2))
 		return (1);
 	if (Parking(*head, "Parking.txt"))
 		return (1);

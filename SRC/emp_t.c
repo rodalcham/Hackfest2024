@@ -6,7 +6,7 @@
 /*   By: rchavez@student.42heilbronn.de <rchavez    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 08:06:22 by rchavez@stu       #+#    #+#             */
-/*   Updated: 2024/09/07 14:25:07 by rchavez@stu      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:22:50 by rchavez@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,13 @@ int	emp_add(emp_t **head, char *dir, char *str)
 	new = (emp_t *)malloc(sizeof(emp_t));
 	if (!new)
 		return (1);
-	new->emmissions = 0;
+	new->emmissions[0] = 0;
+	new->emmissions[1] = 0;
+	new->emmissions[2] = 0;
+	new->emmissions[3] = 0;
+	new->emmissions[4] = 0;
+	new->emmissions[5] = 0;
+	new->emmissions[6] = 0;
 	ft_strlcpy(new->id, str, 42, 0);
 	ft_strlcpy(new->department, str, 42, 1);
 	ft_strlcpy(new->name, str, 42, 2);
@@ -67,17 +73,16 @@ int	emp_add(emp_t **head, char *dir, char *str)
 		*head = new;
 		new->next = NULL;
 	}
-	// printf("This person is called %s, id %s, and produces %i Kg of CO2 per month.\n", new->name, new->id, new->emmissions);
 	return (0);
 }
 
-void	emp(emp_t *head, char *id, char *ammount)
+void	emp(emp_t *head, char *id, char *ammount, int n)
 {
 	while (head)
 	{
 		if (!strcmp(id, head->id))
 		{
-			head->emmissions += atoi(ammount);
+			head->emmissions[n] += atof(ammount);
 			return ;
 		}
 		else
@@ -85,13 +90,13 @@ void	emp(emp_t *head, char *id, char *ammount)
 	}
 }
 
-void	emp_i(emp_t *head, char *id, int ammount)
+void	emp_i(emp_t *head, char *id, float ammount, int n)
 {
 	while (head)
 	{
 		if (!strcmp(id, head->id))
 		{
-			head->emmissions += ammount;
+			head->emmissions[n] += ammount;
 			return ;
 		}
 		else

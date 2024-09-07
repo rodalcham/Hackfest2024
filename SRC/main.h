@@ -6,7 +6,7 @@
 /*   By: rchavez@student.42heilbronn.de <rchavez    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 07:26:55 by rchavez@stu       #+#    #+#             */
-/*   Updated: 2024/09/07 15:24:02 by rchavez@stu      ###   ########.fr       */
+/*   Updated: 2024/09/07 17:43:50 by rchavez@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define malloc malloc_t
 # define free free_t
 
-# define OUTPUT tabloid
+# define OUTPUT "tabloid"
 
 typedef struct s_emp
 {
@@ -34,14 +34,15 @@ typedef struct s_emp
 	char			lname[42];
 	char			local[42];
 	char			department[42];
-	int				emmissions;
+	double			emmissions[7];
 	struct s_emp	*next;
 }					emp_t;
 
 int		extract(char *dir, emp_t** head);
 int		emp_add(emp_t **head, char *dir, char *str);
-void	emp(emp_t *head, char *id, char *ammount);
-void	emp_i(emp_t *head, char *id, int ammount);
+void	emp(emp_t *head, char *id, char *ammount, int n);
+void	emp_i(emp_t *head, char *id, float ammount, int n);
 void	ft_strlcpy(char *dst, char *src, size_t size, int param);
+void	dbprint(emp_t *head, int argc, char **argv);
 
 #endif
