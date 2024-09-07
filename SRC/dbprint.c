@@ -6,7 +6,7 @@
 /*   By: rchavez@student.42heilbronn.de <rchavez    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 16:59:09 by rchavez@stu       #+#    #+#             */
-/*   Updated: 2024/09/07 18:19:08 by rchavez@stu      ###   ########.fr       */
+/*   Updated: 2024/09/07 19:07:05 by rchavez@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	dbprint(emp_t *head, int argc, char **argv)
 	char Departments[5][42] = {"Management", "Marketing", "Manufacturing", "Research", "HR"};
 	if (chdir("../..") < 0)
 		return ;
-	fd = open(OUTPUT, O_WRONLY | O_CREAT);
+	fd = open(OUTPUT, O_WRONLY | O_CREAT | O_TRUNC);
 	if (fd < 0)
 		return ;
 	if (dup2(fd, 1) < 0)

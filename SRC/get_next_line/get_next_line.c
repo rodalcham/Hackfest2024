@@ -6,11 +6,11 @@
 /*   By: rchavez@student.42heilbronn.de <rchavez    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 19:01:09 by rchavez@stu       #+#    #+#             */
-/*   Updated: 2024/09/07 19:05:19 by rchavez@stu      ###   ########.fr       */
+/*   Updated: 2024/09/07 19:05:57 by rchavez@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
