@@ -6,7 +6,7 @@
 /*   By: rchavez@student.42heilbronn.de <rchavez    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 16:59:09 by rchavez@stu       #+#    #+#             */
-/*   Updated: 2024/09/07 22:07:20 by rchavez@stu      ###   ########.fr       */
+/*   Updated: 2024/09/07 22:37:33 by rchavez@stu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	dbprint(emp_t *head, int argc, char **argv)
 	int 	i;
 	int 	fd;
 	int 	j;
+	int		k;
 	emp_t	*temp;
 
 	char Departments[5][42] = {"Management", "Marketing", "Manufacturing", "Research", "HR"};
@@ -37,10 +38,14 @@ void	dbprint(emp_t *head, int argc, char **argv)
 		{
 			temp = head;
 			printf("\t\t{\n\t\t\t\"name\": \"%s\",\n\t\t\t\"staff\": [\n", Departments[j]);
+			k = 0;
 			while (temp)
 			{
 				if (!strcmp(temp->local, argv[i]) && !strcmp(temp->department, Departments[j]))
 				{
+					if (k)
+						printf(",\n");
+					k++;
 					printf("\t\t\t\t{\n");
 					printf("\t\t\t\t\t\"name\": \"%s\",\n", temp->name);
 					printf("\t\t\t\t\t\"lname\": \"%s\",\n", temp->lname);
@@ -50,16 +55,23 @@ void	dbprint(emp_t *head, int argc, char **argv)
 					printf("\t\t\t\t\t\"Parking\": %f,\n", temp->emmissions[3]);
 					printf("\t\t\t\t\t\"Travel\": %f,\n", temp->emmissions[4]);
 					printf("\t\t\t\t\t\"Emails\": %f,\n", temp->emmissions[5]);
-					printf("\t\t\t\t\t\"Energy\": %f,\n", temp->emmissions[6]);
-					printf("\t\t\t\t},\n");
+					printf("\t\t\t\t\t\"Energy\": %f\n", temp->emmissions[6]);
+					printf("\t\t\t\t}");
 				}
 				temp = temp->next;
 			}
+			printf("\n");
 			j++;
-			printf("\t\t\t],\n\t\t},\n");
+			printf("\t\t\t]\n\t\t}");
+			if (j < 5)
+				printf(",");
+			printf("\n");
 		}
-		printf("\t],\n");
-		printf("},\n");
+		printf("\t]\n");
+		printf("}");
+		if (i < argc - 1)
+			printf(",");
+		printf("\n");
 		i++;
 	}
 }
